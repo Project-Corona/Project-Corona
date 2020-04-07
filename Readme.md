@@ -27,6 +27,10 @@ Please report any incompatibilities or problems on the [GitHub Issue Tracker][is
 Place Holder
 -->
 
+#### Plans Going Forward
+
+Add more optional dependencies and configure their quick keys to not conflict with one another by default.
+
 ## Description
 
 The main objective is to have a list of dependant and optional mods called for that are tested for compatibility and playability.
