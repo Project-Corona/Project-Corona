@@ -1,6 +1,6 @@
 # Project Corona
 
-Mod pack for Factorio.  Wrap the game in mods!
+Mod Pack for Factorio.  Wrap the game in mods!
 
 ## News
 
@@ -19,7 +19,7 @@ Place Holder
 
 Initial Release of Project Corona
 
-Please report any incompatibilities or problems on the [GitHub Issue Tracker][issue-tracker]
+Please report any incompatibilities or problems on the [GitHub Issue Tracker][issue-tracker].  Suggestions are also welcome.
 
 <!--
 ### Previously
@@ -35,6 +35,8 @@ This is an attempt to remove/replace duplicate or redundant items between multip
 
 No trees will spawn and no water tiles will be auto generated.
 
+Here are all the mods I use on my play-through's: [My Mod List][personal-mod-list] (This probably won't be kept up to date and some of these mods don't work with 0.18)
+
 #### Starting Items
 
 Item|Qty
@@ -46,6 +48,12 @@ Stone Furnace | 1
 Iron Plate | 8
 Seedling | 50
 Burner Omnitractor | 1
+
+### Added/Manipulated Items
+
+Adds an MK6 Power if [Bob's Warfare Mod][bobwarfare-mod-page] is used.
+
+Re-skins the [Miniloader Mod][miniloader-mod-page] with [Deadlock's Loaders][deadlock-mod-page] so they match the stacking beltbox graphic's.  This was done so they look correct and load/unload train cargo wagons.
 
 ## Contributors
 
@@ -65,6 +73,9 @@ A lot of what I've learned to create this started with help from "[DWG][dwg-gith
   [dwg-github-page]: https://github.com/dgw
   [Anoyomouse-github-page]: https://github.com/Anoyomouse
   [warehousing-mod-page]: https://mods.factorio.com/mod/Warehousing
+  [bobwarfare-mod-page]: https://mods.factorio.com/mod/bobwarfare
+  [miniloader-mod-page]: https://mods.factorio.com/mod/miniloader
+  [deadlock-mod-page]: https://mods.factorio.com/mod/deadlock-beltboxes-loaders
   
   [mod-portal-entry]: https://mods.factorio.com/mod/project-corona
   <!--[forum-thread]:--> 
@@ -74,3 +85,5 @@ A lot of what I've learned to create this started with help from "[DWG][dwg-gith
    
   [badge-latest-release]: https://img.shields.io/github/v/release/project-corona/project-corona.svg?label=current+version
   [badge-release-date]: https://img.shields.io/github/release-date/project-corona/project-corona.svg?label=released
+  
+  [personal-mod-list]: https://github.com/Project-Corona/Project-Corona/blob/master/mod-list.txt
