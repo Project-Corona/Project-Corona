@@ -1,0 +1,22 @@
+{
+  "name": "project-corona",
+  "version": "0.18.0",
+  "factorio_version": "0.18",
+  "title": "Project Corona",
+  "author": "JDOGG",
+  "contact": "",
+  "homepage": "",
+  "dependencies": [
+    "base >= 0.18.0",
+    "boblibrary >= 0.18.0",
+    "bobgreenhouse >= 0.18.0",
+    "? bobwarfare >= 0.18.0",
+    "? boblogistics >= 0.18.0",
+    "? bobplates >= 0.18.0",
+    "? bobenemies >= 0.18.0",
+    "deadlock-beltboxes-loaders >= 2.3.4",
+    "miniloader >= 1.10.8",
+    "? deadlock-integrations >= 2.1.2"
+  ],
+  "description": "Project Corona Mod Pack.  Note: Use default mod settings and use the Project Corona Map Generator Settings."
+}
