@@ -27,13 +27,13 @@ Please report any incompatibilities or problems on the [GitHub Issue Tracker][is
 Place Holder
 -->
 
-#### Plans Going Forward
+### Plans Going Forward
 
 Add more optional dependencies and configure their quick keys to not conflict with one another by default.
 
 ## Description
 
-The main objective is to have a list of dependant and optional mods called for that are tested for compatibility and playability.
+The main objective is to have a list of dependent and optional mods called for that are tested for compatibility and play-ability.
 
 This is an attempt to remove/replace duplicate or redundant items between multiple mods while adding some other things in.
 
@@ -55,7 +55,7 @@ Burner Omnitractor | 1
 
 ### Added/Manipulated Items
 
-Adds an MK6 Power if [Bob's Warfare Mod][bobwarfare-mod-page] is used.
+Adds an MK6 Power Armor if [Bob's Warfare Mod][bobwarfare-mod-page] is used.
 
 Re-skins the [Miniloader Mod][miniloader-mod-page] with [Deadlock's Loaders][deadlock-mod-page] so they match the stacking beltbox graphic's.  This was done so they look correct and load/unload train cargo wagons.
 
@@ -65,7 +65,7 @@ DellAquila's [The Big Furnace Mod][the-big-furnace-mod]
 
 DellAquila's [Circuit Factory Mod][circuit-factory-mod]
 
-The code for the "The Big Furnace" & "Circuit Factory" mods created by **[DellAquila][dellaquila-page]** has been used within this mod and doesn't require them as dependants. (Changed their size and removed their included loaders)
+The code for the "The Big Furnace" & "Circuit Factory" mods created by **[DellAquila][dellaquila-page]** has been used within this mod and doesn't require them as dependents. (Changed their size and removed their included loaders)
 
 ## Special Thanks
 
