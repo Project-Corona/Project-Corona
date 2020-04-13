@@ -17,7 +17,7 @@ Place Holder
 
 ### Latest
 
-Initial Release of Project Corona
+Bug fixes (see changelog)
 
 Please report any incompatibilities or problems on the [GitHub Issue Tracker][issue-tracker].  Suggestions are also welcome.
 
@@ -30,6 +30,10 @@ Place Holder
 ### Plans Going Forward
 
 Add more optional dependencies and configure their quick keys to not conflict with one another by default.
+
+Allow map generator to manipulate Bob's Ores.
+
+Add Settings in to pick and choose which part of the mod pack to use.
 
 ## Description
 
@@ -51,7 +55,7 @@ Stone Water Well | 1
 Stone Furnace | 1
 Iron Plate | 8
 Seedling | 50
-Burner Omnitractor | 1
+Burner Omnitractor (w/ Omnimatter) | 1
 
 ### Added/Manipulated Items
 

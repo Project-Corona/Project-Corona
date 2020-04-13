@@ -32,10 +32,6 @@ if settings.startup["bobs-water"].value == false then
     end
 end
 
-data.raw["map-gen-presets"].default["rich-resources"].basic_settings.autoplace_controls["omnite"] = { richness = "very-good" }
-data.raw["map-gen-presets"].default["rail-world"].basic_settings.autoplace_controls["omnite"] = { frequency = 0.33333333333, size = 3 }
-data.raw["map-gen-presets"].default["ribbon-world"].basic_settings.autoplace_controls["omnite"] = { frequency = 3, size = 0.5, richness = 2 }
-
 data.raw.item["wood"].stack_size = 500
 data.raw.item["wood"].fuel_value = nil
 data.raw.item["small-electric-pole"].fuel_value = nil
@@ -93,50 +89,155 @@ if mods["boblogistics"] then
     end
 end
 
-data.raw["map-gen-presets"].default = {
-    type = "map-gen-presets",
-    name = "default",
-    ["project-corona"] = {
-        order = "1",
-        basic_settings = {
-            autoplace_controls = {
-                ["thorium-ore"] = { frequency = 0.33333333333, size = 3 },
-                ["omnite"] = { frequency = 0.33333333333, size = 3 },
+if not mods["bobplates"] then
+    bobmods.lib.recipe.replace_ingredient("fast-transport-belt-beltbox", "steel-gear-wheel", "iron-gear-wheel")
+end
+
+autoplace_table_value = { frequency = 0.33333333333, size = 3, richness = 1.5 }
+
+if not mods["omnimatter"] then
+    data.raw["map-gen-presets"].default = {
+        type = "map-gen-presets",
+        name = "default",
+        ["project-corona"] = {
+            order = "1",
+            basic_settings = {
+                autoplace_controls = {
+                    ["coal"] = autoplace_table_value,
+                    ["copper-ore"] = autoplace_table_value,
+                    ["crude-oil"] = autoplace_table_value,
+                    ["iron-ore"] = autoplace_table_value,
+                    ["stone"] = autoplace_table_value,
+                    ["uranium-ore"] = autoplace_table_value,
+                },
             },
-        },
-        advanced_settings = {
-            pollution = {
-                enabled = true,
-                ageing = 2, -- Also known as dissipation rate. Must be >= 0.5.
-                enemy_attack_pollution_consumption_modifier = 1, -- Atack Cost Modifier
-                min_pollution_to_damage_trees = 0,
-                pollution_restored_per_tree_damage = 0,
-                diffusion_ratio = 0.01, -- Must be <= 0.25.
-            },
-            enemy_evolution = {
-                enabled = true,
-                time_factor = 2.5e-06, -- 2.5e-06 = 0.0000025 = 25
-                destroy_factor = 2.5e-03, -- 2.5e-03 = 0.0025000 = 250
-                pollution_factor = 1e-06, -- 1e-06 = 0.0000010 = 10
-            },
-            enemy_expansion = {
-                enabled = true,
-                max_expansion_distance = 10,
-                settler_group_min_size = 10,
-                settler_group_max_size = 20,
-                min_expansion_cooldown = 54000, -- In ticks
-                max_expansion_cooldown = 162000, -- In ticks
-            },
-            difficulty_settings = {
-                recipe_difficulty = 0,
-                technology_difficulty = 0,
-                technology_price_multiplier = 1,
-                research_queue_setting = "never", --Either "after-victory", "always" or "never".
+            advanced_settings = {
+                pollution = {
+                    enabled = true,
+                    ageing = 2, -- Also known as dissipation rate. Must be >= 0.5.
+                    enemy_attack_pollution_consumption_modifier = 1, -- Atack Cost Modifier
+                    min_pollution_to_damage_trees = 0,
+                    pollution_restored_per_tree_damage = 0,
+                    diffusion_ratio = 0.01, -- Must be <= 0.25.
+                },
+                enemy_evolution = {
+                    enabled = true,
+                    time_factor = 2.5e-06, -- 2.5e-06 = 0.0000025 = 25
+                    destroy_factor = 2.5e-03, -- 2.5e-03 = 0.0025000 = 250
+                    pollution_factor = 1e-06, -- 1e-06 = 0.0000010 = 10
+                },
+                enemy_expansion = {
+                    enabled = true,
+                    max_expansion_distance = 10,
+                    settler_group_min_size = 10,
+                    settler_group_max_size = 20,
+                    min_expansion_cooldown = 54000, -- In ticks
+                    max_expansion_cooldown = 162000, -- In ticks
+                },
+                difficulty_settings = {
+                    recipe_difficulty = 0,
+                    technology_difficulty = 0,
+                    technology_price_multiplier = 1,
+                    research_queue_setting = "never", --Either "after-victory", "always" or "never".
+                }
             }
-        }
-    },
-    default = {
-        default = true,
-        order = "a"
-    },
-}
+        },
+        default = {
+            default = true,
+            order = "a"
+        },
+    }
+else
+    data.raw["map-gen-presets"].default = {
+        type = "map-gen-presets",
+        name = "default",
+        ["project-corona"] = {
+            order = "1",
+            basic_settings = {
+                autoplace_controls = {
+                    ["omnite"] = autoplace_table_value
+                },
+            },
+            advanced_settings = {
+                pollution = {
+                    enabled = true,
+                    ageing = 2, -- Also known as dissipation rate. Must be >= 0.5.
+                    enemy_attack_pollution_consumption_modifier = 1, -- Atack Cost Modifier
+                    min_pollution_to_damage_trees = 0,
+                    pollution_restored_per_tree_damage = 0,
+                    diffusion_ratio = 0.01, -- Must be <= 0.25.
+                },
+                enemy_evolution = {
+                    enabled = true,
+                    time_factor = 2.5e-06, -- 2.5e-06 = 0.0000025 = 25
+                    destroy_factor = 2.5e-03, -- 2.5e-03 = 0.0025000 = 250
+                    pollution_factor = 1e-06, -- 1e-06 = 0.0000010 = 10
+                },
+                enemy_expansion = {
+                    enabled = true,
+                    max_expansion_distance = 10,
+                    settler_group_min_size = 10,
+                    settler_group_max_size = 20,
+                    min_expansion_cooldown = 54000, -- In ticks
+                    max_expansion_cooldown = 162000, -- In ticks
+                },
+                difficulty_settings = {
+                    recipe_difficulty = 0,
+                    technology_difficulty = 0,
+                    technology_price_multiplier = 1,
+                    research_queue_setting = "never", --Either "after-victory", "always" or "never".
+                }
+            }
+        },
+        default = {
+            default = true,
+            order = "a"
+        },
+    }
+end
+
+--[[
+local data_string = data.raw["map-gen-presets"].default["project-corona"].basic_settings.autoplace_controls
+
+if mods["bobores"] then
+    if data.raw.item["gold-ore"].autoplace_controls == true then
+        table.insert(data_string, {["gold-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["lead-ore"].autoplace_controls == true then
+        table.insert(data_string, {["lead-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["silver-ore"].autoplace_controls == true then
+        table.insert(data_string, {["silver-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["tin-ore"].autoplace_controls == true then
+        table.insert(data_string, {["tin-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["tungsten-ore"].autoplace_controls == true then
+        table.insert(data_string, {["tungsten-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["zinc-ore"].autoplace_controls == true then
+        table.insert(data_string, {["zinc-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["bauxite-ore"].autoplace_controls == true then
+        table.insert(data_string, {["bauxite-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["rutile-ore"].autoplace_controls == true then
+        table.insert(data_string, {["rutile-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["nickel-ore"].autoplace_controls == true then
+        table.insert(data_string, {["nickel-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["cobalt-ore"].autoplace_controls == true then
+        table.insert(data_string, {["cobalt-ore"] = autoplace_table_value})
+    end
+    if data.raw.item["quartz"].autoplace_controls == true then
+        table.insert(data_string, {["quartz"] = autoplace_table_value})
+    end
+    if data.raw.item["sulfur"].autoplace_controls == true then
+        table.insert(data_string, {["sulfur"] = autoplace_table_value})
+    end
+    if data.raw.item["thorium-ore"].autoplace_controls == true then
+        table.insert(data_string, {["thorium-ore"] = autoplace_table_value})
+    end
+end
+--]]
