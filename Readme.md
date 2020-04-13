@@ -88,7 +88,7 @@ A lot of what I've learned to create this started with help from "[DWG][dwg-gith
   [mod-portal-entry]: https://mods.factorio.com/mod/project-corona
   <!--[forum-thread]:--> 
   
-  [github-latest-release]: https://github.com/Project-Corona/Project-Corona/releases
+  [github-latest-release]: https://github.com/Project-Corona/Project-Corona/releases/latest
   [issue-tracker]: https://github.com/Project-Corona/Project-Corona/issues
    
   [badge-latest-release]: https://img.shields.io/github/v/release/project-corona/project-corona.svg?label=current+version
