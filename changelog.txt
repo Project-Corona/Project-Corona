@@ -1,9 +1,24 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.18.3
+Date: 2020-04-16
+
+  Changed:
+    - Made all dependencies optional
+    - Gave all the mod functions startup settings to pick and choose from
+        - The Big Furnace
+        - Circuit Factory
+        - Loaderhaul
+        - Power Armor MK6
+        - Treeless Map
+        - Waterless Map
+    - Map Gen Presets will now work with Base, Bob's Ores, and Omnimatter or any combination of
+      the three
+---------------------------------------------------------------------------------------------------
 Version: 0.18.2
 Date: 2020-04-08
 
   Bug Fix:
-    - Pipe connection now correctly located
+    - Pipe connection on Circuit Factory now correctly located
 ---------------------------------------------------------------------------------------------------
 Version: 0.18.1
 Date: 2020-04-08

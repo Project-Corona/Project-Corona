@@ -1,3 +1,7 @@
+if mods["boblibrary"] then
+    bobmods.lib.recipe.replace_ingredient("rail", "iron-stick", "wood")
+end
+
 if mods["bobwarfare"] then
     if data.raw.item["advanced-processing-unit"] then
         bobmods.lib.recipe.replace_ingredient("bob-power-armor-mk6", "advanced-circuit", "advanced-processing-unit")
@@ -44,4 +48,12 @@ if mods["bobwarfare"] then
             bobmods.lib.recipe.remove_ingredient("bob-power-armor-mk6", "productivity-module-8")
         end
     end
+end
+
+if mods["bobplates"] and settings.startup["treeless-start"] then
+    bobmods.lib.recipe.replace_ingredient("bob-greenhouse", "glass", "copper-plate")
+end
+
+if mods["boblogistics"] then
+    bobmods.lib.recipe.replace_ingredient("basic-splitter", "wood", "iron-stick")
 end
