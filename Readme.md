@@ -53,10 +53,10 @@ Iron Plate | 8
 Magazine | 10
 Pistol | 1
 Seedling (w/ Bob's Greenhouse mod) | 50
-Small Electric Pole (w/ treeless start enabled) | 20
+Small Electric Pole (w/ Treeless Map enabled) | 20
 Stone Furnace | 1
 Stone Water Well (w/ Stone Water Well mod) | 1
-Wood (removed w/ treeless start enabled) | 1
+Wood (removed w/ Treeless Map enabled) | 1
 
 ### Added/Manipulated Items
 

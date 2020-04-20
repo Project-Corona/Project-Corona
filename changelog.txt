@@ -1,4 +1,11 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.18.4
+Date: 2020-04-20
+
+  Changed:
+    - Updated dependencies list to use latest versions of miniloader mod and deadlock's loaders
+      to fix them not overwriting properly causing a non-craftable recipe to appear.
+---------------------------------------------------------------------------------------------------
 Version: 0.18.3
 Date: 2020-04-16
 
