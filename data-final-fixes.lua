@@ -1,23 +1,22 @@
-require("prototypes.entity.entity-final")
-require("prototypes.item.item-final")
-require("prototypes.recipe.recipe-final")
-require("prototypes.technology.technology-final")
-
 --- Waterless Map
 if settings.startup["waterless-map"].value == true and mods["StoneWaterWell"] then
-    if mods["bobores"] and mods["bobmining"] then
+    if mods["bobores"] then
         data.raw.resource["ground-water"] = nil
         data.raw["autoplace-control"]["ground-water"] = nil
         data.raw["map-gen-presets"].default["rich-resources"].basic_settings.autoplace_controls["ground-water"] = nil
         data.raw["map-gen-presets"].default["rail-world"].basic_settings.autoplace_controls["ground-water"] = nil
         data.raw["map-gen-presets"].default["ribbon-world"].basic_settings.autoplace_controls["ground-water"] = nil
-        if data.raw.technology["void-fluid"] then
-            data.raw.technology["void-fluid"] = null
-        end
+    end
+    if mods["bobmining"] then
         for k, v in pairs(data.raw.recipe) do
             if (string.match(k, "*water-miner-*") == k) then
                 data.raw.recipe[k].enabled = false
             end
+        end
+    end
+    if mods["bobplates"] then
+        if data.raw.technology["void-fluid"] then
+            data.raw.technology["void-fluid"] = null
         end
     end
     for k, v in pairs(data.raw.tile) do
@@ -26,19 +25,24 @@ if settings.startup["waterless-map"].value == true and mods["StoneWaterWell"] th
         end
     end
 elseif settings.startup["waterless-map-forced"].value == true then
-    if mods["bobores"] and mods["bobmining"] then
+    settings.startup["waterless-map"].value = false
+    if mods["bobores"] then
         data.raw.resource["ground-water"] = nil
         data.raw["autoplace-control"]["ground-water"] = nil
         data.raw["map-gen-presets"].default["rich-resources"].basic_settings.autoplace_controls["ground-water"] = nil
         data.raw["map-gen-presets"].default["rail-world"].basic_settings.autoplace_controls["ground-water"] = nil
         data.raw["map-gen-presets"].default["ribbon-world"].basic_settings.autoplace_controls["ground-water"] = nil
-        if data.raw.technology["void-fluid"] then
-            data.raw.technology["void-fluid"] = null
-        end
+    end
+    if mods["bobmining"] then
         for k, v in pairs(data.raw.recipe) do
             if (string.match(k, "*water-miner-*") == k) then
                 data.raw.recipe[k].enabled = false
             end
+        end
+    end
+    if mods["bobplates"] then
+        if data.raw.technology["void-fluid"] then
+            data.raw.technology["void-fluid"] = null
         end
     end
     for k, v in pairs(data.raw.tile) do
@@ -63,7 +67,11 @@ data.raw["map-gen-presets"].default = {
     ["project-corona"] = {
         order = "1",
         basic_settings = {
-            autoplace_controls = {}
+            autoplace_controls = {},
+            property_expression_names = {
+                ["control-setting:moisture:frequency:multiplier"] = 1,
+                ["control-setting:moisture:bias"] = -0.5,
+            },
         },
         advanced_settings = {
             pollution = {
@@ -184,7 +192,7 @@ elseif mods["bobores"] and not mods["omnimatter"] then
 end
 
 --- Treeless Map
-if settings.startup["treeless-map"] == true then
+if settings.startup["treeless-map"].value == true then
     require("__bobgreenhouse__.data")
     require("__bobgreenhouse__.data-updates")
     for k, v in pairs(data.raw.tree) do
@@ -205,3 +213,8 @@ else
     data.raw["map-gen-presets"].default["project-corona"].advanced_settings.pollution.pollution_restored_per_tree_damage = 10
     data.raw["map-gen-presets"].default["project-corona"].advanced_settings.pollution.diffusion_ratio = 0.02 -- Must be <= 0.25.
 end
+
+require("prototypes.entity.entity-final")
+require("prototypes.item.item-final")
+require("prototypes.recipe.recipe-final")
+require("prototypes.technology.technology-final")

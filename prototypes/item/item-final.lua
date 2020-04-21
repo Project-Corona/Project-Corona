@@ -28,7 +28,7 @@ if settings.startup["enable-loaderhaul"].value == true then
         return i
     end
 
-    if mods["boblogistics"] then
+    if mods["boblogistics"] and settings.startup["bobmods-logistics-beltoverhaul"].value == true then
         function createBasicItem()
             local bi = data.raw.item["basic-transport-belt-loader"]
             bi.type = "item"
@@ -63,13 +63,17 @@ if settings.startup["enable-loaderhaul"].value == true then
     })
 
     if mods["boblogistics"] then
-        local basic_miniloader = createBasicItem()
+        if settings.startup["bobmods-logistics-beltoverhaul"].value == true then
+            local basic_miniloader = createBasicItem()
+            data:extend({
+                basic_miniloader,
+            })
+        end
         local turbo_miniloader = createItem("turbo-", false, turbo_tint)
         local turbo_filter_miniloader = createItem("turbo-", true, turbo_tint)
         local ultimate_miniloader = createItem("ultimate-", false, ultimate_tint)
         local ultimate_filter_miniloader = createItem("ultimate-", true, ultimate_tint)
         data:extend({
-            basic_miniloader,
             turbo_miniloader,
             turbo_filter_miniloader,
             ultimate_miniloader,

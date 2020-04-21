@@ -1,8 +1,8 @@
 if settings.startup["enable-loaderhaul"].value == true then
-    if mods["boblogistics"] then
-        data.raw.technology["basic-miniloader"] = {
+    if mods["boblogistics"] and settings.startup["bobmods-logistics-beltoverhaul"].value == true then
+        data.raw.technology["basic-transport-belt-loader"] = {
             type = "technology",
-            name = "basic-miniloader",
+            name = "basic-transport-belt-loader",
             icon_size = 128,
             icons = {
                 { icon = "__deadlock-beltboxes-loaders__/graphics/icons/square/loader-icon-base-128.png" },
@@ -101,10 +101,14 @@ if settings.startup["enable-loaderhaul"].value == true then
         bobmods.lib.tech.remove_recipe_unlock("logistics", "transport-belt-loader")
         bobmods.lib.tech.remove_recipe_unlock("logistics-2", "fast-transport-belt-loader")
         bobmods.lib.tech.remove_recipe_unlock("logistics-3", "express-transport-belt-loader")
+        data.raw.technology["basic-miniloader"] = nil
     end
 
     if mods["boblogistics"] and mods["deadlock-integrations"] and mods["miniloader"] then
-        bobmods.lib.tech.remove_recipe_unlock("logistics-0", "basic-transport-belt-loader")
+        if settings.startup["bobmods-logistics-beltoverhaul"].value == true then
+            bobmods.lib.tech.add_prerequisite("miniloader", "basic-transport-belt-loader")
+            bobmods.lib.tech.remove_recipe_unlock("logistics-0", "basic-transport-belt-loader")
+        end
         bobmods.lib.tech.remove_recipe_unlock("logistics-4", "turbo-transport-belt-loader")
         bobmods.lib.tech.remove_recipe_unlock("logistics-5", "ultimate-transport-belt-loader")
     end

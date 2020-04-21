@@ -21,13 +21,13 @@ Place Holder
 
 ### Latest
 
-Add Settings in to pick and choose which part of the mod pack to use.
-
-Project Corona Map Generator Preset now works with Vanilla, Bob's Ores, and Omnimatter or and combination of the three.
+Added a setting to allow beltlayer connector recipes to be changed to match normal underground belt recipes.
 
 ### Previously
 
-Bug fixes (see changelog)
+Add Settings in to pick and choose which part of the mod pack to use.
+
+Project Corona Map Generator Preset now works with Vanilla, Bob's Ores, and Omnimatter or and combination of the three.
 
 ### Plans Going Forward
 

@@ -7,6 +7,12 @@ data:extend({
     },
     {
         type = "bool-setting",
+        name = "enable-beltlayer-recipe-tweak",
+        setting_type = "startup",
+        default_value = true,
+    },
+    {
+        type = "bool-setting",
         name = "enable-big-furnace",
         setting_type = "startup",
         default_value = true,
@@ -43,13 +49,24 @@ data:extend({
     },
 })
 
-if mods["omnimatter"] then
+if mods["boblogisitcs"] then
     data:extend({
         {
             type = "bool-setting",
-            name = "omnimatter-infinite",
+            name = "bobmods-logistics-beltoverhaul",
             setting_type = "startup",
             default_value = true,
+        },
+    })
+end
+
+if mods["bobmining"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "bobmods-mining-waterminers",
+            setting_type = "startup",
+            default_value = false,
         },
     })
 end
@@ -149,13 +166,32 @@ if mods["bobores"] then
     })
 end
 
-if mods["bobmining"] then
+if mods["deadlock-beltboxes-loaders"] then
     data:extend({
         {
             type = "bool-setting",
-            name = "bobmods-mining-waterminers",
+            name = "deadlock-enable-beltboxes",
+            order = "a",
             setting_type = "startup",
-            default_value = false,
+            default_value = true,
+        },
+        {
+            type = "bool-setting",
+            name = "deadlock-enable-loaders",
+            order = "b",
+            setting_type = "startup",
+            default_value = true,
+        },
+    })
+end
+
+if mods["omnimatter"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "omnimatter-infinite",
+            setting_type = "startup",
+            default_value = true,
         },
     })
 end
