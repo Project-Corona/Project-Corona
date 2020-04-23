@@ -76,8 +76,8 @@ data.raw["map-gen-presets"].default = {
         advanced_settings = {
             pollution = {
                 enabled = true,
-                ageing = 4, -- Also known as dissipation rate. Must be >= 0.5.
-                enemy_attack_pollution_consumption_modifier = 4, -- Atack Cost Modifier
+                ageing = 3, -- Also known as dissipation rate. Must be >= 0.5.
+                enemy_attack_pollution_consumption_modifier = 3, -- Atack Cost Modifier
                 min_pollution_to_damage_trees = 0,
                 pollution_restored_per_tree_damage = 0,
                 diffusion_ratio = 0.01, -- Must be <= 0.25.

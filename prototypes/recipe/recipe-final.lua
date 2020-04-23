@@ -98,7 +98,7 @@ if settings.startup["enable-loaderhaul"].value == true then
     end
 end
 
-if settings.startup["enable-beltlayer-recipe-tweak"].value == true then
+if mods["beltlayer"] and settings.startup["enable-beltlayer-recipe-tweak"].value == true then
     local beltlayer_connector = {
         "basic-underground-belt-beltlayer-connector",
         "underground-belt-beltlayer-connector",
@@ -113,7 +113,7 @@ if settings.startup["enable-beltlayer-recipe-tweak"].value == true then
             if name == "basic-underground-belt-beltlayer-connector" then
                 data.raw.recipe[name].ingredients = data.raw.recipe["basic-underground-belt"].ingredients
             else
-                for _, ingredient in ipairs(data.raw.recipe[name].ingredients) do
+                for _, ingredient in pairs(data.raw.recipe[name].ingredients) do
                     if ingredient.amount then
                         ingredient.amount = math.ceil(ingredient.amount * 2)
                     elseif ingredient[2] then

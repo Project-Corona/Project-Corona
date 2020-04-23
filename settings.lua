@@ -1,18 +1,6 @@
 data:extend({
     {
         type = "bool-setting",
-        name = "treeless-map",
-        setting_type = "startup",
-        default_value = true,
-    },
-    {
-        type = "bool-setting",
-        name = "enable-beltlayer-recipe-tweak",
-        setting_type = "startup",
-        default_value = true,
-    },
-    {
-        type = "bool-setting",
         name = "enable-big-furnace",
         setting_type = "startup",
         default_value = true,
@@ -37,6 +25,12 @@ data:extend({
     },
     {
         type = "bool-setting",
+        name = "treeless-map",
+        setting_type = "startup",
+        default_value = true,
+    },
+    {
+        type = "bool-setting",
         name = "waterless-map",
         setting_type = "startup",
         default_value = true,
@@ -48,6 +42,17 @@ data:extend({
         default_value = false,
     },
 })
+
+if mods["beltlayer"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "enable-beltlayer-recipe-tweak",
+            setting_type = "startup",
+            default_value = true,
+        },
+    })
+end
 
 if mods["boblogisitcs"] then
     data:extend({
