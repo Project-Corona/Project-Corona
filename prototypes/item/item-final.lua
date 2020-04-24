@@ -1,15 +1,23 @@
-if settings.startup["enable-loaderhaul"].value == true then
-    function createItem(prefix, filter, mask_tint)
-        if prefix == nil and filter == false then
-            ivar = data.raw.item["miniloader"]
-        elseif prefix == nil and filter == true then
-            ivar = data.raw.item["filter-miniloader"]
-        elseif prefix ~= nil and filter == false then
-            ivar = data.raw.item[prefix .. "miniloader"]
-        elseif prefix ~= nil and filter == true then
-            ivar = data.raw.item[prefix .. "filter-miniloader"]
+if settings.startup["enable-loaderhaul"].value == true and mods["miniloader"] and mods["deadlock-beltboxes-loaders"] and settings.startup["deadlock-enable-loaders"].value == true then
+    local function createItem(prefix, filter, mask_tint)
+        local function name()
+            if prefix == nil and filter == false then
+                local name = "miniloader"
+                return name
+            elseif prefix == nil and filter == true then
+                local name = "filter-miniloader"
+                return name
+            elseif prefix ~= nil and filter == false then
+                local name = prefix .. "-miniloader"
+                return name
+            elseif prefix ~= nil and filter == true then
+                local name = prefix .. "-filter-miniloader"
+                return name
+            end
         end
-        local i = ivar
+
+        local i = data.raw.item[name()]
+
         if filter == true then
             i.icons = {
                 { icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-base.png" },
@@ -28,30 +36,12 @@ if settings.startup["enable-loaderhaul"].value == true then
         return i
     end
 
-    if mods["boblogistics"] and settings.startup["bobmods-logistics-beltoverhaul"].value == true then
-        function createBasicItem()
-            local bi = data.raw.item["basic-transport-belt-loader"]
-            bi.type = "item"
-            bi.name = "basic-transport-belt-loader"
-            bi.technology = "basic-miniloader"
-            bi.icon = nil
-            bi.icons = {
-                { icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-base.png" },
-                { icon = "__deadlock-beltboxes-loaders__/graphics/icons/mipmaps/loader-icon-mask.png" }
-            }
-            bi.icon_size = 64
-            bi.place_result = "basic-transport-belt-loader"
-            bi.stack_size = 50
-            return bi
-        end
-    end
-
     local miniloader = createItem(nil, false, tint)
     local filter_miniloader = createItem(nil, true, tint)
-    local fast_miniloader = createItem("fast-", false, fast_tint)
-    local fast_filter_miniloader = createItem("fast-", true, fast_tint)
-    local express_miniloader = createItem("express-", false, express_tint)
-    local express_filter_miniloader = createItem("express-", true, express_tint)
+    local fast_miniloader = createItem("fast", false, fast_tint)
+    local fast_filter_miniloader = createItem("fast", true, fast_tint)
+    local express_miniloader = createItem("express", false, express_tint)
+    local express_filter_miniloader = createItem("express", true, express_tint)
 
     data:extend({
         miniloader,
@@ -62,17 +52,17 @@ if settings.startup["enable-loaderhaul"].value == true then
         express_filter_miniloader,
     })
 
-    if mods["boblogistics"] then
+    if mods["boblogistics"] and mods["deadlock-integrations"] then
         if settings.startup["bobmods-logistics-beltoverhaul"].value == true then
-            local basic_miniloader = createBasicItem()
+            local basic_miniloader = createItem("basic", false, basic_tint)
             data:extend({
                 basic_miniloader,
             })
         end
-        local turbo_miniloader = createItem("turbo-", false, turbo_tint)
-        local turbo_filter_miniloader = createItem("turbo-", true, turbo_tint)
-        local ultimate_miniloader = createItem("ultimate-", false, ultimate_tint)
-        local ultimate_filter_miniloader = createItem("ultimate-", true, ultimate_tint)
+        local turbo_miniloader = createItem("turbo", false, turbo_tint)
+        local turbo_filter_miniloader = createItem("turbo", true, turbo_tint)
+        local ultimate_miniloader = createItem("ultimate", false, ultimate_tint)
+        local ultimate_filter_miniloader = createItem("ultimate", true, ultimate_tint)
         data:extend({
             turbo_miniloader,
             turbo_filter_miniloader,

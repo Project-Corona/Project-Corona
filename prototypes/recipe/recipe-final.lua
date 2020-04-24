@@ -1,8 +1,8 @@
 if settings.startup["enable-loaderhaul"].value == true then
     if mods["boblogistics"] and mods["deadlock-beltboxes-loaders"] then
-        if mods["beltlayer"] then
+        if mods["beltlayer"] and settings.startup["deadlock-enable-beltboxes"].value == true then
             data.raw["item-subgroup"]["beltboxes"].group = "bob-logistics"
-        else
+        elseif not mods["beltlayer"] and settings.startup["deadlock-enable-beltboxes"].value == true then
             data.raw.recipe["transport-belt-beltbox"].subgroup = "bob-logistic-tier-1"
             data.raw.recipe["transport-belt-beltbox"].order = "g"
             data.raw.recipe["fast-transport-belt-beltbox"].subgroup = "bob-logistic-tier-2"
@@ -19,12 +19,6 @@ if settings.startup["enable-loaderhaul"].value == true then
                 data.raw.recipe["ultimate-transport-belt-beltbox"].subgroup = "bob-logistic-tier-5"
                 data.raw.recipe["ultimate-transport-belt-beltbox"].order = "g"
             end
-        end
-        if mods["miniloader"] and mods["deadlock-integrations"] and settings.startup["bobmods-logistics-beltoverhaul"].value == true then
-            data.raw["loader-1x1"]["basic-transport-belt-loader"].localised_description = { "entity-description.basic-deadlock-loader" }
-            data.raw.recipe["basic-transport-belt-loader"].localised_description = { "entity-description.basic-deadlock-loader" }
-            data.raw.recipe["basic-transport-belt-loader"].subgroup = "bob-logistic-tier-0"
-            data.raw.recipe["basic-transport-belt-loader"].order = "f"
         end
     end
 
@@ -62,9 +56,14 @@ if settings.startup["enable-loaderhaul"].value == true then
     if data.raw.item["basic-transport-belt-loader"] then
         data.raw.recipe["basic-transport-belt-loader"].ingredients = { { "burner-inserter", 5 }, { "iron-gear-wheel", 5 }, { "iron-plate", 5 }, }
     end
+    if data.raw.item["basic-miniloader"] then
+        data.raw.recipe["basic-miniloader"].ingredients = { { "burner-inserter", 5 }, { "iron-gear-wheel", 5 }, { "iron-plate", 5 }, }
+    end
     if data.raw.item["miniloader"] then
         if data.raw.item["basic-transport-belt-loader"] then
             data.raw.recipe["miniloader"].ingredients = { { "basic-transport-belt-loader", 1 }, { "transport-belt", 1 }, { "inserter", 5 }, }
+        elseif data.raw.item["basic-miniloader"] then
+            data.raw.recipe["miniloader"].ingredients = { { "basic-miniloader", 1 }, { "transport-belt", 1 }, { "inserter", 5 }, }
         else
             data.raw.recipe["miniloader"].ingredients = { { "transport-belt", 1 }, { "inserter", 5 }, }
         end
@@ -112,7 +111,7 @@ if mods["beltlayer"] and settings.startup["enable-beltlayer-recipe-tweak"].value
         if data.raw["loader-1x1"][name] then
             if name == "basic-underground-belt-beltlayer-connector" then
                 data.raw.recipe[name].ingredients = data.raw.recipe["basic-underground-belt"].ingredients
-            else
+            elseif name ~= "basic-underground-belt-beltlayer-connector" then
                 for _, ingredient in pairs(data.raw.recipe[name].ingredients) do
                     if ingredient.amount then
                         ingredient.amount = math.ceil(ingredient.amount * 2)
