@@ -77,13 +77,15 @@ if settings.startup["enable-loaderhaul"].value == true then
             bobmods.lib.tech.remove_recipe_unlock("logistics-4", "turbo-transport-belt-loader")
             bobmods.lib.tech.remove_recipe_unlock("logistics-5", "ultimate-transport-belt-loader")
         end
-    elseif mods["miniloader"] and not mods["deadlock-beltboxes-loaders"] or settings.startup["deadlock-enable-loaders"].value == false then
-        if mods["boblogistics"] then
-            bobmods.lib.tech.replace_prerequisite("miniloader", "fast-inserter", "logistics")
-            bobmods.lib.tech.add_prerequisite("fast-miniloader", "logistics-2")
-            bobmods.lib.tech.add_prerequisite("express-miniloader", "production-science-pack")
-        elseif mods["boblibrary"] and not mods["boblogistics"] then
-            bobmods.lib.tech.remove_prerequisite("miniloader", "fast-inserter")
+    elseif mods["miniloader"] then
+        if not mods["deadlock-beltboxes-loaders"] or settings.startup["deadlock-enable-loaders"].value == false then
+            if mods["boblogistics"] then
+                bobmods.lib.tech.replace_prerequisite("miniloader", "fast-inserter", "logistics")
+                bobmods.lib.tech.add_prerequisite("fast-miniloader", "logistics-2")
+                bobmods.lib.tech.add_prerequisite("express-miniloader", "production-science-pack")
+            elseif mods["boblibrary"] and not mods["boblogistics"] then
+                bobmods.lib.tech.remove_prerequisite("miniloader", "fast-inserter")
+            end
         end
     end
     if data.raw.technology["deadlock-stacking-3"] and mods["boblibrary"] then

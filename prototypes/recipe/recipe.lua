@@ -41,7 +41,7 @@ if settings.startup["enable-big-furnace"].value == true then
         },
     })
 
-    function createBigRecipe(recipe_name, energy, recipe_ingredient, cost, result)
+    local function createBigRecipe(recipe_name, energy, recipe_ingredient, cost, result)
         local recipe = {
             type = "recipe",
             name = "big-" .. recipe_name,
@@ -62,6 +62,8 @@ if settings.startup["enable-big-furnace"].value == true then
     local big_lead = createBigRecipe("lead-plate", 3.5, "lead-ore", 50, 50)
     local big_silver = createBigRecipe("silver-plate", 3.5, "silver-ore", 50, 50)
     local big_glass = createBigRecipe("glass", 3.5, "quartz", 50, 50)
+    local kr_big_glass = createBigRecipe("glass", 10, "sand", 100, 50)
+    local kr_big_rare_metals = createBigRecipe("rare-metals", 10, "raw-rare-metals", 100, 50)
 
     data:extend({
         big_steel,
@@ -69,6 +71,13 @@ if settings.startup["enable-big-furnace"].value == true then
         big_iron,
         big_stone_brick,
     })
+
+    if mods["Krastorio2"] then
+        data:extend({
+            kr_big_glass,
+            kr_big_rare_metals,
+        })
+    end
 
     if mods["bobplates"] then
         data:extend({
@@ -78,6 +87,7 @@ if settings.startup["enable-big-furnace"].value == true then
             big_glass,
         })
     end
+
 end
 
 if settings.startup["enable-circuit-factory"].value == true then

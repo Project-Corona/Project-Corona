@@ -25,6 +25,12 @@ data:extend({
     },
     {
         type = "bool-setting",
+        name = "enable-project-corona-map-manipulation",
+        setting_type = "startup",
+        default_value = true,
+    },
+    {
+        type = "bool-setting",
         name = "treeless-map",
         setting_type = "startup",
         default_value = true,
@@ -72,6 +78,7 @@ if mods["bobmining"] then
             name = "bobmods-mining-waterminers",
             setting_type = "startup",
             default_value = false,
+            hidden = true,
         },
     })
 end
@@ -167,6 +174,7 @@ if mods["bobores"] then
             name = "bobmods-ores-enablewaterores",
             setting_type = "startup",
             default_value = false,
+            hidden = true,
         },
     })
 end
@@ -187,6 +195,19 @@ if mods["deadlock-beltboxes-loaders"] then
             setting_type = "startup",
             default_value = true,
         },
+    })
+end
+
+if mods["deadlock-integrations"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "deadlock-integrations-new-bob-recipes",
+            order = "a",
+            setting_type = "startup",
+            default_value = false,
+            hidden = true,
+        }
     })
 end
 
