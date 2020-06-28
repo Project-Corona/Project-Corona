@@ -23,7 +23,7 @@ Place Holder
 
 Added a GUI that has pre-loaded blueprint books.  All you have to do is press the button and have it inserted into your inventory.
 
-![GUI][gui-image]
+![GUI][readme-image-1]
 
 ### Previously
 
@@ -106,5 +106,5 @@ A lot of what I've learned to create this started with help from "[DWG][dwg-gith
   [badge-latest-release]: https://img.shields.io/github/v/release/project-corona/project-corona.svg?label=current+version
   [badge-release-date]: https://img.shields.io/github/release-date/project-corona/project-corona.svg?label=released
   
-  [readme-image-1]: https://raw.githubusercontent.com/Project-Corona/Project-Corona/master/gui-image.jpg
+  [readme-image-1]: https://raw.githubusercontent.com/Project-Corona/Project-Corona/master/GUI-Image.jpg
   
