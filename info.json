@@ -21,10 +21,11 @@
     "? deadlock-integrations >= 2.1.2",
     "? miniloader >= 1.11.1",
     "? omnimatter >= 3.18.0",
+    "? rso-mod >= 6.0.9",
     "? StoneWaterWell >= 1.18.4",
+    "? Void-Works >= 0.1.1",
     "? Warehousing >= 0.3.0",
-    "? Warehousing-Compression >= 0.18.1",
-    "? Void-Works >= 0.1.1"
+    "? Warehousing-Compression >= 0.18.1"
   ],
   "description": "Intended to be played with all dependencies & Use default mod settings. Select Project Corona Map Generator Setting."
 }

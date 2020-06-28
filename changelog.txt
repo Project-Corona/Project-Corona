@@ -1,6 +1,13 @@
 Version: 0.18.8
-Date: 2020-05-01
+Date: 2020-06-28
 
+  Changed:
+    - Updated recipes
+    - Updated Map Gen Presets to spawn omnimatter more like rail world maps.
+    - Added a setting to change the size of the starting area to push enemies back if using
+      mods that make enemies more difficult or cause more frequent attacks.
+    - Hid some settings that don't have any effect when using omnimatter mod.
+    - Added GUI - Currently only has a few pre-loaded blueprint books.
   Bug fix:
     - Fixed an issue causing the mod not to load if beltlayer recipe tweak was enabled and
       bob's basic belts were enabled.  (Finally I hope)

@@ -9,19 +9,77 @@ if settings.startup["enable-power-armor-mk6"].value == true then
                 ingredients =
                 {
                     { "bob-power-armor-mk5", 1 },
-                    { "processing-unit", 100 },
-                    { "advanced-circuit", 200 },
-                    { "iron-plate", 1000 },
-                    { "iron-gear-wheel", 500 },
-                    { "steel-plate", 100 },
-                    { "plastic-bar", 100 },
-                    { "effectivity-module-3", 5 },
-                    { "speed-module-3", 5 },
-                    { "productivity-module-3", 5 },
                 },
                 result = "bob-power-armor-mk6"
             }
         })
+    end
+end
+
+if settings.startup["enable-power-armor-mk6"].value == true then
+    if mods["bobwarfare"] then
+        if data.raw.item["advanced-processing-unit"] then
+            table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "advanced-processing-unit", 200 })
+        else
+            table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "processing-unit", 100 })
+            table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "advanced-circuit", 200 })
+        end
+        if mods["bobenemies"] then
+            if settings.startup["bobmods-enemies-enablenewartifacts"].value == true then
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "alien-artifact-blue", 50 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "alien-artifact-green", 50 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "alien-artifact-orange", 50 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "alien-artifact-purple", 50 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "alien-artifact-red", 50 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "alien-artifact-yellow", 50 })
+            elseif settings.startup["bobmods-enemies-enableartifacts"].value == true and settings.startup["bobmods-enemies-enablenewartifacts"].value == false then
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "alien-artifact", 500 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "iron-gear-wheel", 250 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "iron-plate", 500 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "steel-plate", 50 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "plastic-bar", 50 })
+            elseif settings.startup["bobmods-enemies-enableartifacts"].value == false and settings.startup["bobmods-enemies-enablenewartifacts"].value == false then
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "iron-gear-wheel", 500 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "iron-plate", 1000 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "steel-plate", 100 })
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "plastic-bar", 100 })
+                if data.raw.module["effectivity-module-8"] then
+                    table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "effectivity-module-8", 5 })
+                else
+                    table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "effectivity-module-3", 5 })
+                end
+                if data.raw.module["productivity-module-8"] then
+                    table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "productivity-module-8", 5 })
+                else
+                    table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "productivity-module-3", 5 })
+                end
+                if data.raw.module["speed-module-8"] then
+                    table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "speed-module-8", 5 })
+                else
+                    table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "speed-module-3", 5 })
+                end
+            end
+        else
+            table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "iron-gear-wheel", 500 })
+            table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "iron-plate", 1000 })
+            table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "steel-plate", 100 })
+            table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "plastic-bar", 100 })
+            if data.raw.module["effectivity-module-8"] then
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "effectivity-module-8", 5 })
+            else
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "effectivity-module-3", 5 })
+            end
+            if data.raw.module["productivity-module-8"] then
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "productivity-module-8", 5 })
+            else
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "productivity-module-3", 5 })
+            end
+            if data.raw.module["speed-module-8"] then
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "speed-module-8", 5 })
+            else
+                table.insert(data.raw.recipe["bob-power-armor-mk6"].ingredients, { "speed-module-3", 5 })
+            end
+        end
     end
 end
 

@@ -1,62 +1,41 @@
 if settings.startup["enable-project-corona-map-manipulation"].value == true then
     --- Waterless Map
-    if settings.startup["waterless-map"].value == true and mods["StoneWaterWell"] then
-        if mods["bobores"] then
-            data.raw.resource["ground-water"] = nil
-            data.raw["autoplace-control"]["ground-water"] = nil
-            data.raw["map-gen-presets"].default["rich-resources"].basic_settings.autoplace_controls["ground-water"] = nil
-            data.raw["map-gen-presets"].default["rail-world"].basic_settings.autoplace_controls["ground-water"] = nil
-            data.raw["map-gen-presets"].default["ribbon-world"].basic_settings.autoplace_controls["ground-water"] = nil
-        end
-        if mods["bobmining"] then
-            for k, _ in pairs(data.raw.recipe) do
-                if (string.match(k, "*water-miner-*") == k) then
-                    data.raw.recipe[k].enabled = false
+    if settings.startup["waterless-map"].value == true then
+        if mods["StoneWaterWell"] then
+            if data.raw.resource["ground-water"] then
+                data.raw.resource["ground-water"] = nil
+                data.raw["autoplace-control"]["ground-water"] = nil
+            end
+            if data.raw.resource["lithia-water"] then
+                data.raw.resource["lithia-water"] = nil
+            end
+            for k, _ in pairs(data.raw.tile) do
+                if (string.match(k, ".*water.*") == k) then
+                    data.raw.tile[k].autoplace = nil
+                end
+            end
+        elseif settings.startup["waterless-map-forced"].value == true then
+            if data.raw.resource["ground-water"] then
+                data.raw.resource["ground-water"] = nil
+                data.raw["autoplace-control"]["ground-water"] = nil
+            end
+            if data.raw.resource["lithia-water"] then
+                data.raw.resource["lithia-water"] = nil
+            end
+            for k, _ in pairs(data.raw.tile) do
+                if (string.match(k, ".*water.*") == k) then
+                    data.raw.tile[k].autoplace = nil
                 end
             end
         end
-        if mods["bobplates"] then
-            if data.raw.technology["void-fluid"] then
-                data.raw.technology["void-fluid"] = null
-            end
-        end
-        for k, _ in pairs(data.raw.tile) do
-            if (string.match(k, ".*water.*") == k) then
-                data.raw.tile[k].autoplace = nil
-            end
-        end
-    elseif settings.startup["waterless-map-forced"].value == true then
-        settings.startup["waterless-map"].value = false
-        if mods["bobores"] then
-            data.raw.resource["ground-water"] = nil
-            data.raw["autoplace-control"]["ground-water"] = nil
-            data.raw["map-gen-presets"].default["rich-resources"].basic_settings.autoplace_controls["ground-water"] = nil
-            data.raw["map-gen-presets"].default["rail-world"].basic_settings.autoplace_controls["ground-water"] = nil
-            data.raw["map-gen-presets"].default["ribbon-world"].basic_settings.autoplace_controls["ground-water"] = nil
-        end
-        if mods["bobmining"] then
-            for k, _ in pairs(data.raw.recipe) do
-                if (string.match(k, "*water-miner-*") == k) then
-                    data.raw.recipe[k].enabled = false
+    elseif settings.startup["waterless-map"].value == true and not mods["StoneWaterWell"] then
+        if mods["bobores"] and mods["bobmining"] then
+            settings.startup["bobmods-ores-enablewaterores"].value = true
+            settings.startup["bobmods-mining-waterminers"].value = true
+            for k, _ in pairs(data.raw.tile) do
+                if (string.match(k, ".*water.*") == k) then
+                    data.raw.tile[k].autoplace = nil
                 end
-            end
-        end
-        if mods["bobplates"] then
-            if data.raw.technology["void-fluid"] then
-                data.raw.technology["void-fluid"] = null
-            end
-        end
-        for k, _ in pairs(data.raw.tile) do
-            if (string.match(k, ".*water.*") == k) then
-                data.raw.tile[k].autoplace = nil
-            end
-        end
-    elseif settings.startup["waterless-map"].value == true and mods["bobores"] and mods["bobmining"] then
-        settings.startup["bobmods-ores-enablewaterores"].value = true
-        settings.startup["bobmods-mining-waterminers"].value = true
-        for k, _ in pairs(data.raw.tile) do
-            if (string.match(k, ".*water.*") == k) then
-                data.raw.tile[k].autoplace = nil
             end
         end
     end
@@ -69,6 +48,7 @@ if settings.startup["enable-project-corona-map-manipulation"].value == true then
             order = "1",
             basic_settings = {
                 autoplace_controls = {},
+                starting_area = settings.startup["pc-starting-area"].value,
                 property_expression_names = {
                     ["control-setting:moisture:frequency:multiplier"] = 1,
                     ["control-setting:moisture:bias"] = -0.5,
@@ -111,81 +91,54 @@ if settings.startup["enable-project-corona-map-manipulation"].value == true then
         },
     }
 
-    local autoplace_value = { frequency = 0.33333333333, size = 3, richness = 1.5 }
+    local function autoplace_value()
+        if mods["omnimatter"] and mods["rso-mod"] then
+            local autoplace_value = { frequency = 0.17, size = 1, richness = 1 }
+            return autoplace_value
+        elseif mods["omnimatter"] and not mods["rso-mod"] then
+            local autoplace_value = { frequency = 0.33333333333, size = 2, richness = 2 }
+            return autoplace_value
+        else
+            local autoplace_value = { frequency = 0.33333333333, size = 3, richness = 1.5 }
+            return autoplace_value
+        end
+    end
 
     local data_string = data.raw["map-gen-presets"].default["project-corona"].basic_settings.autoplace_controls
 
-    if not mods["bobores"] and not mods["omnimatter"] then
-        data_string["coal"] = autoplace_value
-        data_string["copper-ore"] = autoplace_value
-        data_string["crude-oil"] = autoplace_value
-        data_string["iron-ore"] = autoplace_value
-        data_string["stone"] = autoplace_value
-        data_string["uranium-ore"] = autoplace_value
-    elseif not mods["bobores"] and mods["omnimatter"] then
-        data_string["omnite"] = autoplace_value
-    elseif mods["bobores"] and mods["omnimatter"] then
-        data_string["omnite"] = autoplace_value
-        if mods["bobmining"] then
-            if settings.startup["bobmods-ores-enablewaterores"].value == true and settings.startup["bobmods-mining-waterminers"].value == true and settings.startup["waterless-map"].value == true then
-                data_string["ground-water"] = autoplace_value
-                data_string["lithia-water"] = autoplace_value
-            end
-        end
-    elseif mods["bobores"] and not mods["omnimatter"] then
-        data_string["coal"] = autoplace_value
-        data_string["copper-ore"] = autoplace_value
-        data_string["crude-oil"] = autoplace_value
-        data_string["iron-ore"] = autoplace_value
-        data_string["stone"] = autoplace_value
-        data_string["uranium-ore"] = autoplace_value
-        if settings.startup["bobmods-ores-enablebauxite"].value == true then
-            data_string["bauxite-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablecobaltore"].value == true then
-            data_string["cobalt-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablegemsore"].value == true then
-            data_string["gem-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablegoldore"].value == true then
-            data_string["gold-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enableleadore"].value == true then
-            data_string["lead-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablenickelore"].value == true then
-            data_string["nickel-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablequartz"].value == true then
-            data_string["quartz"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablerutile"].value == true then
-            data_string["rutile-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablesilverore"].value == true then
-            data_string["silver-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablesulfur"].value == true then
-            data_string["sulfur"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enabletinore"].value == true then
-            data_string["tin-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enabletungstenore"].value == true then
-            data_string["tungsten-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablezincore"].value == true then
-            data_string["zinc-ore"] = autoplace_value
-        end
-        if settings.startup["bobmods-ores-enablethoriumore"].value == true then
-            data_string["thorium-ore"] = autoplace_value
-        end
-        if mods["bobmining"] then
-            if settings.startup["bobmods-ores-enablewaterores"].value == true and settings.startup["bobmods-mining-waterminers"].value == true then
-                data_string["ground-water"] = autoplace_value
-                data_string["lithia-water"] = autoplace_value
-            end
+    local resource_table = {
+        --- Vanilla
+        "coal",
+        "copper-ore",
+        "crude-oil",
+        "iron-ore",
+        "stone",
+        "uranium-ore",
+
+        --- Omnimatter
+        "omnite",
+
+        --- Bob's Ores
+        "bauxite-ore",
+        "cobalt-ore",
+        "gem-ore",
+        "gold-ore",
+        "lead-ore",
+        "nickel-ore",
+        "quartz",
+        "rutile-ore",
+        "silver-ore",
+        "sulfur",
+        "tin-ore",
+        "tungsten-ore",
+        "zinc-ore",
+        "thorium-ore",
+        "ground-water",
+    }
+
+    for _, name in pairs(resource_table) do
+        if data.raw.resource[name] then
+            data_string[name] = autoplace_value()
         end
     end
 
@@ -201,6 +154,17 @@ if settings.startup["enable-project-corona-map-manipulation"].value == true then
             data.raw.item["wood"].fuel_value = nil
             data.raw.item["small-electric-pole"].fuel_value = nil
             data.raw.item["seedling"].fuel_value = nil
+        elseif settings.startup["treeless-map-forced"].value == true then
+            for k, _ in pairs(data.raw.tree) do
+                data.raw.tree[k].autoplace = nil
+            end
+            if mods["boblibrary"] then
+                bobmods.lib.recipe.replace_ingredient_in_all("wooden-chest", "iron-chest")
+            end
+            data.raw.recipe["wooden-chest"].enabled = false
+            data.raw.item["wood"].stack_size = 500
+            data.raw.item["wood"].fuel_value = nil
+            data.raw.item["small-electric-pole"].fuel_value = nil
         end
     else
         settings.startup["treeless-map"] = false

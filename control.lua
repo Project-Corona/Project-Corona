@@ -12,3 +12,5 @@ script.on_event(defines.events.on_player_created, function(event)
         end
     end
 end)
+
+require("prototypes.gui.gui-control")

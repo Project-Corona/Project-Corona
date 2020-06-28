@@ -37,6 +37,12 @@ data:extend({
     },
     {
         type = "bool-setting",
+        name = "treeless-map-forced",
+        setting_type = "startup",
+        default_value = false,
+    },
+    {
+        type = "bool-setting",
         name = "waterless-map",
         setting_type = "startup",
         default_value = true,
@@ -46,6 +52,30 @@ data:extend({
         name = "waterless-map-forced",
         setting_type = "startup",
         default_value = false,
+    },
+    {
+        type = "bool-setting",
+        name = "enable-dev-tools",
+        setting_type = "startup",
+        default_value = false,
+        hidden = true,
+    },
+})
+
+local function default_value_check()
+    local default_value = 1
+    if mods["bobenemies"] then
+        return default_value + 0.5
+    end
+    return default_value
+end
+
+data:extend({
+    {
+        type = "double-setting",
+        name = "pc-starting-area",
+        setting_type = "startup",
+        default_value = default_value_check(),
     },
 })
 
@@ -83,8 +113,91 @@ if mods["bobmining"] then
     })
 end
 
+if mods["bobplates"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "bobmods-plates-groundwater",
+            setting_type = "startup",
+            default_value = false,
+            hidden = true,
+        },
+    })
+end
+
+local function omnimatter_hide_check()
+    if mods["omnimatter"] then
+        return true
+    else
+        return false
+    end
+end
+
 if mods["bobores"] then
     data:extend({
+        {
+            type = "bool-setting",
+            name = "bobmods-ores-infiniteore",
+            setting_type = "startup",
+            default_value = false,
+            hidden = omnimatter_hide_check(),
+        },
+        {
+            type = "bool-setting",
+            name = "bobmods-ores-unsortedgemore",
+            setting_type = "startup",
+            default_value = false,
+            hidden = omnimatter_hide_check(),
+        },
+        {
+            type = "bool-setting",
+            name = "bobmods-ores-leadgivesnickel",
+            setting_type = "startup",
+            default_value = false,
+            hidden = omnimatter_hide_check(),
+        },
+        {
+            type = "double-setting",
+            name = "bobmods-ores-leadnickelratio",
+            setting_type = "startup",
+            default_value = 0.6,
+            maximum_value = 1,
+            minimum_value = 0,
+            hidden = omnimatter_hide_check(),
+        },
+        {
+            type = "bool-setting",
+            name = "bobmods-ores-nickelgivescobalt",
+            setting_type = "startup",
+            default_value = false,
+            hidden = omnimatter_hide_check(),
+        },
+        {
+            type = "double-setting",
+            name = "bobmods-ores-nickelcobaltratio",
+            setting_type = "startup",
+            default_value = 0.4,
+            maximum_value = 1,
+            minimum_value = 0,
+            hidden = omnimatter_hide_check(),
+        },
+        {
+            type = "bool-setting",
+            name = "bobmods-ores-gemsfromotherores",
+            setting_type = "startup",
+            default_value = false,
+            hidden = omnimatter_hide_check(),
+        },
+        {
+            type = "double-setting",
+            name = "bobmods-ores-gemprobability",
+            setting_type = "startup",
+            default_value = 0.05,
+            maximum_value = 1,
+            minimum_value = 0,
+            hidden = omnimatter_hide_check(),
+        },
+
         {
             type = "bool-setting",
             name = "bobmods-ores-enablebauxite",
@@ -211,13 +324,33 @@ if mods["deadlock-integrations"] then
     })
 end
 
+local function rso_check()
+    if mods["rso-mod"] then
+        return true
+    else
+        return false
+    end
+end
+
 if mods["omnimatter"] then
     data:extend({
         {
             type = "bool-setting",
             name = "omnimatter-infinite",
             setting_type = "startup",
-            default_value = true,
+            default_value = rso_check(),
+        },
+    })
+end
+
+if mods["miniloader"] then
+    data:extend({
+        {
+            type = "bool-setting",
+            name = "miniloader-enable-chute",
+            setting_type = "startup",
+            default_value = false,
+            hidden = true,
         },
     })
 end
