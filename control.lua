@@ -1,3 +1,5 @@
+require("prototypes.gui.gui-control")
+
 script.on_event(defines.events.on_player_created, function(event)
     if settings.startup["enable-project-corona-map-manipulation"].value == true then
         if settings.startup["treeless-map"].value == true then
@@ -12,5 +14,3 @@ script.on_event(defines.events.on_player_created, function(event)
         end
     end
 end)
-
-require("prototypes.gui.gui-control")
