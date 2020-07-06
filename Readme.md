@@ -21,21 +21,19 @@ Place Holder
 
 ### Latest
 
+Added to the GUI that checks for duplicate custom inputs.
+
+![GUI][readme-image-2]
+
+### Previously
+
 Added a GUI that has pre-loaded blueprint books.  All you have to do is press the button and have it inserted into your inventory.
 
 ![GUI][readme-image-1]
 
-### Previously
-
-Added a setting to allow beltlayer connector recipes to be changed to match normal underground belt recipes.
-
-Add Settings in to pick and choose which part of the mod pack to use.
-
-Project Corona Map Generator Preset now works with Vanilla, Bob's Ores, and Omnimatter or and combination of the three.
-
 ### Plans Going Forward
 
-Add more optional dependencies and configure their quick keys to not conflict with one another by default.  Potentially a help command and/or GUI to list only mod related quick keys.
+Add more optional dependencies and configure their quick keys to not conflict with one another by default.
 
 ## Description
 
@@ -106,5 +104,5 @@ A lot of what I've learned to create this started with help from "[DWG][dwg-gith
   [badge-latest-release]: https://img.shields.io/github/v/release/project-corona/project-corona.svg?label=current+version
   [badge-release-date]: https://img.shields.io/github/release-date/project-corona/project-corona.svg?label=released
   
-  [readme-image-1]: https://raw.githubusercontent.com/Project-Corona/Project-Corona/master/GUI-Image.jpg
-  
+  [readme-image-1]: https://raw.githubusercontent.com/Project-Corona/Project-Corona/master/gui-image-1.jpg
+  [readme-image-2]: https://raw.githubusercontent.com/Project-Corona/Project-Corona/master/gui-image-2.jpg

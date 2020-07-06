@@ -2,17 +2,13 @@ if settings.startup["enable-loaderhaul"].value == true and mods["miniloader"] an
     local function createPlatform(prefix, filter, mask_tint)
         local function name()
             if prefix == nil and filter == false then
-                local name = "miniloader-inserter"
-                return name
+                return "miniloader-inserter"
             elseif prefix == nil and filter == true then
-                local name = "filter-miniloader-inserter"
-                return name
+                return "filter-miniloader-inserter"
             elseif prefix ~= nil and filter == false then
-                local name = prefix .. "-miniloader-inserter"
-                return name
+                return prefix .. "-miniloader-inserter"
             elseif prefix ~= nil and filter == true then
-                local name = prefix .. "-filter-miniloader-inserter"
-                return name
+                return prefix .. "-filter-miniloader-inserter"
             end
         end
 
@@ -166,17 +162,13 @@ if settings.startup["enable-loaderhaul"].value == true and mods["miniloader"] an
     local function createStructure(prefix, filter, mask_tint)
         local function name()
             if prefix == nil and filter == false then
-                local name = "miniloader-loader"
-                return name
+                return "miniloader-loader"
             elseif prefix == nil and filter == true then
-                local name = "filter-miniloader-loader"
-                return name
+                return "filter-miniloader-loader"
             elseif prefix ~= nil and filter == false then
-                local name = prefix .. "-miniloader-loader"
-                return name
+                return prefix .. "-miniloader-loader"
             elseif prefix ~= nil and filter == true then
-                local name = prefix .. "-filter-miniloader-loader"
-                return name
+                return prefix .. "-filter-miniloader-loader"
             end
         end
 

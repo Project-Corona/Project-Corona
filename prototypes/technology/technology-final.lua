@@ -3,11 +3,9 @@ if settings.startup["enable-loaderhaul"].value == true then
         local function newTech(prefix, mask_tint)
             local function name()
                 if prefix == nil then
-                    local name = "miniloader"
-                    return name
+                    return "miniloader"
                 else
-                    local name = prefix .. "-miniloader"
-                    return name
+                    return prefix .. "-miniloader"
                 end
             end
 

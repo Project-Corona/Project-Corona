@@ -1,3 +1,9 @@
+Version: 0.18.10
+Date: 2020-07-06
+
+  Changed:
+    - Added a button to the second tab of the GUI to find duplicate custom inputs.
+---------------------------------------------------------------------------------------------------
 Version: 0.18.9
 Date: 2020-06-29
 

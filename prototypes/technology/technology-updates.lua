@@ -21,7 +21,7 @@ if mods["bobwarfare"] then
     end
 end
 
-if mods["CW-thermal-solar-power"] then
+if mods["CW-thermal-solar-power"] and mods["bobpower"] then
     bobmods.lib.tech.remove_recipe_unlock("CW-thermal-solar-power-2", "CW-recycler")
     bobmods.lib.tech.remove_recipe_unlock("CW-thermal-solar-power-2", "CW-steam-engine-2")
     bobmods.lib.tech.remove_recipe_unlock("CW-thermal-solar-power-3", "CW-steam-engine-3")

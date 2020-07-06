@@ -13,7 +13,7 @@ if mods["boblogistics"] then
 end
 
 if settings.startup["enable-loaderhaul"].value == true then
-    --- Recipe Orginization
+    --- Recipe Organization
     if mods["boblogistics"] and mods["deadlock-beltboxes-loaders"] then
         if mods["beltlayer"] and settings.startup["deadlock-enable-beltboxes"].value == true then
             data.raw["item-subgroup"]["beltboxes"].group = "bob-logistics"

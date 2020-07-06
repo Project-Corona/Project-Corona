@@ -25,25 +25,15 @@ data.raw["gui-style"].default.pc_draggable_filler =
     horizontally_stretchable = "on",
     vertically_stretchable = "on",
 }
-
-data.raw["gui-style"].default.pc_text_box =
+data.raw["gui-style"].default.pc_table_line =
 {
-    type = "textbox_style",
-    width = 320,
-    vertically_stretchable = "on",
+    type = "line_style",
+    parent = "line",
+    width = 20,
 }
-
-data.raw["gui-style"].default.pc_switch_button =
+data.raw["gui-style"].default.pc_scroll_pane =
 {
-    type = "switch_style",
-    parent = "switch",
-    top_padding = 2,
-}
-
-data.raw["gui-style"].default.pc_switch_button_label =
-{
-    type = "label_style",
-    parent = "label",
-    left_padding = 40,
-    right_padding = 10,
+    type = "scroll_pane_style",
+    parent = "scroll_pane",
+    maximal_height = 400
 }

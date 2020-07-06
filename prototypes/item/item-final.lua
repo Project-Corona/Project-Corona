@@ -2,17 +2,13 @@ if settings.startup["enable-loaderhaul"].value == true and mods["miniloader"] an
     local function createItem(prefix, filter, mask_tint)
         local function name()
             if prefix == nil and filter == false then
-                local name = "miniloader"
-                return name
+                return "miniloader"
             elseif prefix == nil and filter == true then
-                local name = "filter-miniloader"
-                return name
+                return "filter-miniloader"
             elseif prefix ~= nil and filter == false then
-                local name = prefix .. "-miniloader"
-                return name
+                return prefix .. "-miniloader"
             elseif prefix ~= nil and filter == true then
-                local name = prefix .. "-filter-miniloader"
-                return name
+                return prefix .. "-filter-miniloader"
             end
         end
 

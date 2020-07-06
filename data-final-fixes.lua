@@ -58,7 +58,7 @@ if settings.startup["enable-project-corona-map-manipulation"].value == true then
                 pollution = {
                     enabled = true,
                     ageing = 3, -- Also known as dissipation rate. Must be >= 0.5.
-                    enemy_attack_pollution_consumption_modifier = 3, -- Atack Cost Modifier
+                    enemy_attack_pollution_consumption_modifier = 3, -- Attack Cost Modifier
                     min_pollution_to_damage_trees = 0,
                     pollution_restored_per_tree_damage = 0,
                     diffusion_ratio = 0.01, -- Must be <= 0.25.
@@ -93,14 +93,11 @@ if settings.startup["enable-project-corona-map-manipulation"].value == true then
 
     local function autoplace_value()
         if mods["omnimatter"] and mods["rso-mod"] then
-            local autoplace_value = { frequency = 0.17, size = 1, richness = 1 }
-            return autoplace_value
+            return { frequency = 0.17, size = 1, richness = 1 }
         elseif mods["omnimatter"] and not mods["rso-mod"] then
-            local autoplace_value = { frequency = 0.33333333333, size = 2, richness = 2 }
-            return autoplace_value
+            return { frequency = 0.33333333333, size = 2, richness = 2 }
         else
-            local autoplace_value = { frequency = 0.33333333333, size = 3, richness = 1.5 }
-            return autoplace_value
+            return { frequency = 0.33333333333, size = 3, richness = 1.5 }
         end
     end
 
