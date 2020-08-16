@@ -15,7 +15,9 @@ data:extend({
     },
 })
 
-data.raw["gui-style"].default.pc_draggable_filler =
+local style = data.raw["gui-style"].default
+
+style.pc_draggable_filler =
 {
     type = "empty_widget_style",
     parent = "draggable_space",
@@ -25,13 +27,13 @@ data.raw["gui-style"].default.pc_draggable_filler =
     horizontally_stretchable = "on",
     vertically_stretchable = "on",
 }
-data.raw["gui-style"].default.pc_table_line =
+style.pc_table_line =
 {
     type = "line_style",
     parent = "line",
     width = 20,
 }
-data.raw["gui-style"].default.pc_scroll_pane =
+style.pc_scroll_pane =
 {
     type = "scroll_pane_style",
     parent = "scroll_pane",

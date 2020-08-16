@@ -1,3 +1,12 @@
+Version: 1.0.0
+Date: 2020-08-16
+
+  Changed:
+    - Internal code cleanup
+    - Fixed a typo for boblogistics setting callout
+    - Factorio version 1.0.0 Update
+    - Removed freeplay cutscene so character spawns with correct items
+---------------------------------------------------------------------------------------------------
 Version: 0.18.10
 Date: 2020-07-06
 

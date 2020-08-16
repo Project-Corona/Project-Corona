@@ -1,4 +1,4 @@
---- Personal Changes for a Krastorio + Space Exploration Playthrough
+--- Personal Changes for a Krastorio + Space Exploration Play through
 if mods["Krastorio2"] then
     if mods["beltlayer"] then
         data.raw.recipe["underground-belt-beltlayer-connector"].ingredients = { { "iron-beam", 2 }, { "transport-belt", 5 }, }

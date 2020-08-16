@@ -90,7 +90,7 @@ if mods["beltlayer"] then
     })
 end
 
-if mods["boblogisitcs"] then
+if mods["boblogistics"] then
     data:extend({
         {
             type = "bool-setting",

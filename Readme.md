@@ -43,7 +43,7 @@ This is an attempt to remove/replace duplicate or redundant items between multip
 
 ~~No trees will spawn and no water tiles will be auto generated.~~ Added settings to make these optional in version 0.18.3.
 
-Here are all the mods I use on my play-through's: [My Mod List][personal-mod-list]. (This probably won't be kept up to date and some of these mods don't work with 0.18 unless you update their "factorio_version": to "0.18" in their info.json files)
+Here are all the mods I use on my play-through's: [My Mod List][personal-mod-list]. (This probably won't be kept up to date, and some of these mods don't work with 0.18 unless you update their "factorio_version": to "0.18" in their info.json files)
 
 #### Starting Items
 
@@ -64,9 +64,9 @@ Wood (removed w/ Treeless Map enabled) | 1
 
 Adds an MK6 Power Armor if [Bob's Warfare Mod][bobwarfare-mod-page] is used.
 
-Re-skins the [Miniloader Mod][miniloader-mod-page] with [Deadlock's Loaders][deadlock-mod-page] graphics.  This was done so they match the look of the beltbox's correctly and will also load/unload train cargo wagons.
+Re-skins the [Miniloader Mod][miniloader-mod-page] with [Deadlock's Loaders][deadlock-mod-page] graphics.  This was done in order for them to match the look of the beltbox's correctly and will also load/unload train cargo wagons.
 
-The code for the "The Big Furnace" & "Circuit Factory" mods created by **[DellAquila][dellaquila-page]** has been used within this mod and doesn't require them as dependents. (Changed their size and removed their included loaders)
+The code for "The Big Furnace" & "Circuit Factory" mods created by **[DellAquila][dellaquila-page]** has been used within this mod and doesn't require them as dependents. (Changed their size and removed their included loaders)
 
 The ability to remove trees and water from spawning on the map.
 
